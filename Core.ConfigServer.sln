@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Server", "WebApi.Server\WebApi.Server.csproj", "{082BF464-ECB8-40CF-AE88-444BC5917F35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Client", "WebApi.Client\WebApi.Client.csproj", "{625A5DB8-40C4-471F-B1D2-926BBC87C8CB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Test", "WebApi.Test\WebApi.Test.csproj", "{7C0374D1-FF1F-4F84-B8B3-2E02FA0461CB}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "WebApi", "WebApi\WebApi.shproj", "{ADE947AB-C7F7-43F5-B4B2-23D0974ED9E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{082BF464-ECB8-40CF-AE88-444BC5917F35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{082BF464-ECB8-40CF-AE88-444BC5917F35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{082BF464-ECB8-40CF-AE88-444BC5917F35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{082BF464-ECB8-40CF-AE88-444BC5917F35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{625A5DB8-40C4-471F-B1D2-926BBC87C8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{625A5DB8-40C4-471F-B1D2-926BBC87C8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{625A5DB8-40C4-471F-B1D2-926BBC87C8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{625A5DB8-40C4-471F-B1D2-926BBC87C8CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C0374D1-FF1F-4F84-B8B3-2E02FA0461CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C0374D1-FF1F-4F84-B8B3-2E02FA0461CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C0374D1-FF1F-4F84-B8B3-2E02FA0461CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C0374D1-FF1F-4F84-B8B3-2E02FA0461CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {784F4D76-0717-4D37-8642-1ACB5659BF0A}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WebApi\WebApi.projitems*{ade947ab-c7f7-43f5-b4b2-23d0974ed9e6}*SharedItemsImports = 13
+	EndGlobalSection
+EndGlobal
