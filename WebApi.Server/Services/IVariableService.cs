@@ -10,6 +10,12 @@ namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Services;
 public interface IVariableService
 {
   /// <summary>
+  /// Возвращает список доступных профилей.
+  /// </summary>
+  /// <returns>Коллекция имён профилей.</returns>
+  Task<IEnumerable<string>> GetProfiles();
+
+  /// <summary>
   /// Возвращает набор переменных для указанного профиля.
   /// </summary>
   /// <param name="profile">Имя профиля.</param>

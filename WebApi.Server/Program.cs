@@ -34,6 +34,7 @@ builder.Services.AddSwaggerGen(c =>
   c.SwaggerDoc("v1", new () { Title = "GlacialBytes ConfigServer", Version = "v1" });
   c.EnableAnnotations();
 });
+builder.Services.AddRazorPages();
 builder.Services.AddApplicationServices(opt =>
 {
   opt.DatabaseConnectionString = builder.Configuration.GetConnectionString("Database");
@@ -44,11 +45,16 @@ var app = builder.Build();
 // Конфигурируем конвейер обработки HTTP запросов
 if (app.Environment.IsDevelopment())
 {
+  app.UseExceptionHandler("/Error");
   app.MapSwagger();
   app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GlacialBytes ConfigServer REST API v1"));
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.MapRazorPages();
 
 // Конфигурируем REST API
 app.MapGet(

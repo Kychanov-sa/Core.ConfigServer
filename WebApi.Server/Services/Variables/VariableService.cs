@@ -68,6 +68,16 @@ internal class VariableService : IVariableService
   #region IVariableService
 
   /// <summary>
+  /// <see cref="IVariableService.GetProfiles"/>
+  /// </summary>
+  public async Task<IEnumerable<string>> GetProfiles()
+  {
+    var filter = new BsonDocument();
+    var categoriesList = await _profilesCollection.DistinctAsync<string>("_id", filter);
+    return categoriesList.ToEnumerable<string>();
+  }
+
+  /// <summary>
   /// <see cref="IVariableService.GetVariable(string, string)"/>
   /// </summary>
   public async Task<object?> GetVariable(string profile, string variable)

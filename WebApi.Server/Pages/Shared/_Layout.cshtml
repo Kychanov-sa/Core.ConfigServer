@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - ConfigServer</title>
+  <link rel="stylesheet" href="~/lib/metro4/css/metro.min.css">
+  <link rel="stylesheet" href="~/lib/metro4/css/metro-colors.min.css">
+  <link rel="stylesheet" href="~/lib/metro4/css/metro-icons.min.css">
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+  <style>
+    table {
+        font-size: 14px;
+    }
+
+    table td [class*=mif-] {
+        margin: 0 4px;
+    }
+  </style>
+</head>
+<body>
+    <header class="container pos-relative" data-role="appbar" data-expand-point="md">
+    <a href="#" class="brand no-hover fg-white-hover order-1"><img src="~/images/glacialbytes32.png" alt="GlacialBytes" />
+      <h4 style="margin-left: 20px;">
+        ConfigServer v1.0
+      </h4>
+      </a>
+      <div class="app-bar-item d-none d-flex-md order-2">
+        <input type="text" placeholder="Search" class="app-bar-input app-bar-search">
+      </div>
+
+      <ul class="app-bar-menu order-4 order-md-3">
+        <li><a href="#" class="fg-white-hover">Pull requests</a></li>
+        <li><a href="#" class="fg-white-hover">Issues</a></li>
+        <li><a href="#" class="fg-white-hover">Marketplace</a></li>
+        <li><a href="#" class="fg-white-hover">Explorer</a></li>
+      </ul>
+
+      <div class="app-bar-container ml-auto order-3 order-md-4">
+        <a href="#" class="app-bar-item"><span class="mif-bell"></span></a>
+
+        <div class="app-bar-container">
+          <a class="app-bar-item dropdown-toggle marker-light" href="#"><span class="mif-plus"></span></a>
+          <ul class="d-menu place-right" data-role="dropdown">
+            <li><a href="">New repository</a></li>
+            <li><a href="">Import repository</a></li>
+            <li><a href="">New gist</a></li>
+            <li><a href="">New organization</a></li>
+            <li class="divider"></li>
+            <li><a href="">New issue</a></li>
+          </ul>
+        </div>
+
+        <div class="app-bar-container">
+          <a class="app-bar-item dropdown-toggle marker-light pl-1 pr-5" href="#">
+            <img class="rounded" data-role="gravatar" data-email="sergey@pimenov.com.ua" data-size="25">
+          </a>
+          <ul class="v-menu place-right" data-role="dropdown">
+            <li><a href="">Signed as <strong>olton</strong></a></li>
+            <li class="divider"></li>
+            <li><a href="">Your profile</a></li>
+            <li><a href="">Your stars</a></li>
+            <li><a href="">Your gists</a></li>
+            <li class="divider"></li>
+            <li><a href="">Help</a></li>
+            <li><a href="">Settings</a></li>
+            <li><a href="">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  <div class="container content">
+    <main role="main" class="pb-3">
+      @RenderBody()
+    </main>
+  </div>
+
+  <footer class="border-top footer text-muted">
+    <div class="container">
+      &copy; 2023 GlacialBytes.
+    </div>
+  </footer>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/metro4/js/metro.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+
+  @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

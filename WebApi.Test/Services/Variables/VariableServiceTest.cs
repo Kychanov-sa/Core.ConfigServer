@@ -30,6 +30,14 @@ namespace WebApi.Test.Services.Variables
     }
 
     [TestMethod]
+    public async Task GetProfiles()
+    {
+      var profiles = await _variableService.GetProfiles();
+      Assert.IsNotNull(profiles);
+      Assert.AreEqual(1, profiles.Count());
+    }
+
+    [TestMethod]
     public async Task GetVariable()
     {
       var actualStringValue = await _variableService.GetVariable(TestProfile, TestVariableName);
@@ -70,8 +78,9 @@ namespace WebApi.Test.Services.Variables
       var result = await _variableService.GetVariables(TestProfile);
       Assert.IsNotNull(result);
       Assert.IsTrue(result.Any());
-      Assert.AreEqual(TestVariableName, result.First().Key);
-      Assert.AreEqual(TestVariableValue, result.First().Value?.ToString());
+
+      var actualValue = result.FirstOrDefault(kv => kv.Key == TestVariableName).Value;
+      Assert.AreEqual(TestVariableValue, actualValue);
     }
 
     [TestMethod]
