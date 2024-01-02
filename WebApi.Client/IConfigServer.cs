@@ -42,5 +42,19 @@ namespace GlacialBytes.Core.ConfigServer.WebApi.Client
     /// <returns>Ответ на проверку жизнеспособности сервиса.</returns>
     [Get("/health")]
     Task<HttpResponseMessage> HealthCheck();
+
+    /// <summary>
+    /// Проверка готовности сервиса к работе.
+    /// </summary>
+    /// <returns>Ответ на проверку готовности сервиса.</returns>
+    [Get("/ready")]
+    Task<HttpResponseMessage> ReadyCheck();
+
+    /// <summary>
+    /// Возвращает версию сервиса.
+    /// </summary>
+    /// <returns>Номер версии сервиса.</returns>
+    [Get("/version")]
+    Task<string> GetVersion();
   }
 }

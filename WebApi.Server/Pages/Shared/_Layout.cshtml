@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="~/lib/metro4/css/metro.min.css">
   <link rel="stylesheet" href="~/lib/metro4/css/metro-colors.min.css">
   <link rel="stylesheet" href="~/lib/metro4/css/metro-icons.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
   <style>
@@ -19,11 +20,11 @@
     }
   </style>
 </head>
-<body>
+<body class="dark">
     <header class="container pos-relative" data-role="appbar" data-expand-point="md">
     <a href="#" class="brand no-hover fg-white-hover order-1"><img src="~/images/glacialbytes32.png" alt="GlacialBytes" />
       <h4 style="margin-left: 20px;">
-        ConfigServer v1.0
+        ConfigServer
       </h4>
       </a>
       <div class="app-bar-item d-none d-flex-md order-2">
@@ -83,6 +84,7 @@
   </footer>
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/metro4/js/metro.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
   <script src="~/js/site.js" asp-append-version="true"></script>
 
   @await RenderSectionAsync("Scripts", required: false)

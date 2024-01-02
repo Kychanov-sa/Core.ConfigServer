@@ -37,6 +37,7 @@ Global
 		SolutionGuid = {784F4D76-0717-4D37-8642-1ACB5659BF0A}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		WebApi\WebApi.projitems*{082bf464-ecb8-40cf-ae88-444bc5917f35}*SharedItemsImports = 5
 		WebApi\WebApi.projitems*{ade947ab-c7f7-43f5-b4b2-23d0974ed9e6}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

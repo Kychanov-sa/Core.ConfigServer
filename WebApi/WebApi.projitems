@@ -9,6 +9,6 @@
     <Import_RootNamespace>WebApi</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)NewFolder\" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ServiceVersion.cs" />
   </ItemGroup>
 </Project>

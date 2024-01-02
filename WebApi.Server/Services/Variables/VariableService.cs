@@ -1,5 +1,4 @@
-﻿using System.Data.Common;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Ardalis.GuardClauses;
 using GlacialBytes.Core.ConfigServer.WebApi.Server.Exceptions;
 using MongoDB.Bson;
@@ -21,12 +20,12 @@ internal class VariableService : IVariableService
   /// <summary>
   /// Адрес сервера MongoDB.
   /// </summary>
-  private static string? _mongoServerAddress;
+  private static MongoUrl? _mongoAddress;
 
   /// <summary>
-  /// Имя базы данных MongoDB.
+  /// Клиент MongoDB.
   /// </summary>
-  private static string? _mongoDatabaseName;
+  private readonly MongoClient _mongoClient;
 
   /// <summary>
   /// Коллекция профилей с переменными.
@@ -38,13 +37,11 @@ internal class VariableService : IVariableService
   /// </summary>
   public VariableService()
   {
-    if (_mongoServerAddress == null)
-      throw new ConfigurationException("Data source is empty.");
-    if (_mongoDatabaseName == null)
-      throw new ConfigurationException("Initial catalog is empty.");
+    if (_mongoAddress == null)
+      throw new ConfigurationException("MongoDB client is not configured.");
 
-    var mongoClient = new MongoClient(_mongoServerAddress);
-    var mongoDatabase = mongoClient.GetDatabase(_mongoDatabaseName);
+    _mongoClient = new MongoClient(_mongoAddress);
+    var mongoDatabase = _mongoClient.GetDatabase(_mongoAddress.DatabaseName);
     _profilesCollection = mongoDatabase.GetCollection<BsonDocument>(MongoVariablesCollectionName);
   }
 
@@ -55,14 +52,7 @@ internal class VariableService : IVariableService
   public static void Configure(string connectionString)
   {
     Guard.Against.Null(connectionString, nameof(connectionString));
-
-    var connectionStringBuilder = new DbConnectionStringBuilder()
-    {
-      ConnectionString = connectionString,
-    };
-
-    _mongoServerAddress = connectionStringBuilder["Data source"]?.ToString();
-    _mongoDatabaseName = connectionStringBuilder["Initial catalog"]?.ToString();
+    _mongoAddress = new MongoUrl(connectionString);
   }
 
   #region IVariableService
@@ -123,4 +113,14 @@ internal class VariableService : IVariableService
   }
 
   #endregion
+
+  /// <summary>
+  /// Проверяет здоровье сервиса.
+  /// </summary>
+  public async Task CheckHealth()
+  {
+    IMongoDatabase dbInstance = _mongoClient.GetDatabase(_mongoAddress.DatabaseName)
+      .WithReadPreference(new ReadPreference(ReadPreferenceMode.Secondary));
+    await dbInstance.RunCommandAsync<BsonDocument>(new BsonDocument { { "ping", 1 } });
+  }
 }

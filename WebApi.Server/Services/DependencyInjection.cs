@@ -1,4 +1,5 @@
 ﻿using GlacialBytes.Core.ConfigServer.WebApi.Server.Services.Variables;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 
 namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Services;
 
@@ -23,5 +24,20 @@ public static class DependencyInjection
 
     services.AddSingleton<IVariableService>(new VariableService());
     return services;
+  }
+
+  /// <summary>
+  /// Добавляет проверки здоровья сервиса.
+  /// </summary>
+  /// <param name="builder">Построитель проверок здоровья.</param>
+  /// <param name="failureStatus">Статус нарушения проверки.</param>
+  /// <param name="tags">Теги проверок.</param>
+  /// <returns>Дополненный построитель проверок здоровья.</returns>
+  public static IHealthChecksBuilder AddApplicationServicesHealthChecks(
+    this IHealthChecksBuilder builder,
+    HealthStatus? failureStatus,
+    IEnumerable<string> tags)
+  {
+    return builder.AddCheck<VariableServiceHealthCheck>("Variable service check", failureStatus, tags);
   }
 }
