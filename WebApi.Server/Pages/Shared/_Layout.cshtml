@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model BasePageModel
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -15,62 +17,67 @@
         font-size: 14px;
     }
 
-    table td [class*=mif-] {
-        margin: 0 4px;
-    }
+        table td [class*=mif-] {
+            margin: 0 4px;
+        }
   </style>
 </head>
 <body class="dark">
-    <header class="container pos-relative" data-role="appbar" data-expand-point="md">
-    <a href="#" class="brand no-hover fg-white-hover order-1"><img src="~/images/glacialbytes32.png" alt="GlacialBytes" />
+  <header class="container pos-relative" data-role="appbar" data-expand-point="md">
+    <a href="#" class="brand no-hover fg-white-hover order-1">
+      <img src="~/images/glacialbytes32.png" alt="GlacialBytes" />
       <h4 style="margin-left: 20px;">
-        ConfigServer
+        CORE :: ConfigServer
       </h4>
-      </a>
-      <div class="app-bar-item d-none d-flex-md order-2">
-        <input type="text" placeholder="Search" class="app-bar-input app-bar-search">
-      </div>
+    </a>
+    <div class="app-bar-item d-none d-flex-md order-2">
+      <input type="text" placeholder="Search" class="app-bar-input app-bar-search">
+    </div>
 
-      <ul class="app-bar-menu order-4 order-md-3">
-        <li><a href="#" class="fg-white-hover">Pull requests</a></li>
-        <li><a href="#" class="fg-white-hover">Issues</a></li>
-        <li><a href="#" class="fg-white-hover">Marketplace</a></li>
-        <li><a href="#" class="fg-white-hover">Explorer</a></li>
+    @*<ul class="app-bar-menu order-4 order-md-3">
+    <li><a href="#" class="fg-white-hover">Pull requests</a></li>
+    <li><a href="#" class="fg-white-hover">Issues</a></li>
+    <li><a href="#" class="fg-white-hover">Marketplace</a></li>
+    <li><a href="#" class="fg-white-hover">Explorer</a></li>
+    </ul>*@
+
+    <div class="app-bar-container ml-auto order-3 order-md-4">
+      @*  <a href="#" class="app-bar-item"><span class="mif-bell"></span></a>
+
+      <div class="app-bar-container">
+      <a class="app-bar-item dropdown-toggle marker-light" href="#"><span class="mif-plus"></span></a>
+      <ul class="d-menu place-right" data-role="dropdown">
+      <li><a href="">New repository</a></li>
+      <li><a href="">Import repository</a></li>
+      <li><a href="">New gist</a></li>
+      <li><a href="">New organization</a></li>
+      <li class="divider"></li>
+      <li><a href="">New issue</a></li>
       </ul>
+      </div>*@
 
-      <div class="app-bar-container ml-auto order-3 order-md-4">
-        <a href="#" class="app-bar-item"><span class="mif-bell"></span></a>
-
-        <div class="app-bar-container">
-          <a class="app-bar-item dropdown-toggle marker-light" href="#"><span class="mif-plus"></span></a>
-          <ul class="d-menu place-right" data-role="dropdown">
-            <li><a href="">New repository</a></li>
-            <li><a href="">Import repository</a></li>
-            <li><a href="">New gist</a></li>
-            <li><a href="">New organization</a></li>
-            <li class="divider"></li>
-            <li><a href="">New issue</a></li>
-          </ul>
-        </div>
-
+      @if (Model.IsAuthenticated)
+      {
         <div class="app-bar-container">
           <a class="app-bar-item dropdown-toggle marker-light pl-1 pr-5" href="#">
-            <img class="rounded" data-role="gravatar" data-email="sergey@pimenov.com.ua" data-size="25">
+            <img class="rounded ml-4" src="https://id.directum.ru/photo?size=25" />
+            @Model.CurrentUserShortName
           </a>
           <ul class="v-menu place-right" data-role="dropdown">
-            <li><a href="">Signed as <strong>olton</strong></a></li>
-            <li class="divider"></li>
+            <li><a href="https://id.directum.ru">Signed as <strong>@Model.CurrentUserName</strong></a></li>
+            @*<li class="divider"></li>
             <li><a href="">Your profile</a></li>
             <li><a href="">Your stars</a></li>
-            <li><a href="">Your gists</a></li>
+            <li><a href="">Your gists</a></li>*@
             <li class="divider"></li>
             <li><a href="">Help</a></li>
             <li><a href="">Settings</a></li>
-            <li><a href="">Sign out</a></li>
+            <li><a href="https://id.directum.ru/signout">Sign out</a></li>
           </ul>
         </div>
-      </div>
-    </header>
+      }
+    </div>
+  </header>
   <div class="container content">
     <main role="main" class="pb-3">
       @RenderBody()

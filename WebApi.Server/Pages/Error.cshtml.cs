@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using GlacialBytes.Core.ConfigServer.WebApi.Server.Pages.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -9,7 +10,7 @@ namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Pages;
 /// </summary>
 [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 [IgnoreAntiforgeryToken]
-public class ErrorModel : PageModel
+public class ErrorModel : BasePageModel
 {
   /// <summary>
   /// Идентификатор запроса.

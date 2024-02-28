@@ -1,5 +1,7 @@
 ﻿using GlacialBytes.Core.ConfigServer.WebApi.Server.Models;
+using GlacialBytes.Core.ConfigServer.WebApi.Server.Pages.Shared;
 using GlacialBytes.Core.ConfigServer.WebApi.Server.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Pages;
@@ -7,7 +9,8 @@ namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Pages;
 /// <summary>
 /// Модель данных страницы профиля.
 /// </summary>
-public class ProfileModel : PageModel
+[Authorize()]
+public class ProfileModel : BasePageModel
 {
   /// <summary>
   /// Сервис переменных.

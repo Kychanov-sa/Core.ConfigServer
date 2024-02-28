@@ -1,4 +1,7 @@
-﻿using GlacialBytes.Core.ConfigServer.WebApi.Server.Services;
+﻿using GlacialBytes.Core.ConfigServer.WebApi.Server.Pages.Shared;
+using GlacialBytes.Core.ConfigServer.WebApi.Server.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Pages;
@@ -6,7 +9,8 @@ namespace GlacialBytes.Core.ConfigServer.WebApi.Server.Pages;
 /// <summary>
 /// Модель данных главной страницы.
 /// </summary>
-public class IndexModel : PageModel
+[Authorize]
+public class IndexModel : BasePageModel
 {
   /// <summary>
   /// Сервис переменных.
